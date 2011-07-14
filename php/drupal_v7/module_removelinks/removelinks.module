@@ -1,0 +1,22 @@
+<?php
+
+/*
+ * Implements hook_entity_view_alter
+ */
+function removelinks_entity_view_alter(&$build, $type) {
+  // remove some links from teaser views
+  if ($build['#view_mode'] == 'teaser' && $type = 'node') {
+    $links =& $build['links'];
+    if (isset($links['blog'])) {
+      if (isset($links['blog']['#links']['blog_usernames_blog'])) {
+        unset($links['blog']['#links']['blog_usernames_blog']);
+      }
+    }
+    if (isset($links['comment'])) {
+      if (isset($links['comment']['#links']['comment-add'])) {
+        unset($links['comment']['#links']['comment-add']);
+      }
+    }
+  }
+}
+
