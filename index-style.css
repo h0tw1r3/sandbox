@@ -5,7 +5,8 @@ body {
     font-size: 13px;
     background-color: white;
     margin: 8px;
-    font-family: monospace;
+    font-family: 'Consolas','Lucida Console',monospace;
+    border-bottom: 1px solid black;
 }
 h1,h2,h3,h4,h5,h6 {
     margin: 0;
@@ -13,6 +14,11 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #333;
     color: white;
     font-weight: 900;
+}
+h1,h2 {
+    color: #ef0;
+    line-height: 1em;
+    padding-bottom: 6px;
 }
 h1 {
     font-size: 28px;
@@ -36,6 +42,12 @@ p img:nth-child(1) {
 }
 a {
     text-decoration: none;
+}
+h1 a,h2 a {
+    color: orange;
+}
+h1 a:hover, h2 a:hover {
+    color: #ffc520;
 }
 strong {
     font-weight: 800;
@@ -64,7 +76,7 @@ table {
     padding: .5em;
     width: 100%;
     border-collapse: collapse;
-    border-bottom: 4px solid #333;
+    border: 1px solid black;
 }
 code {
     white-space:pre;
@@ -129,4 +141,25 @@ tr:hover a.source {
     box-shadow: 0 0 4px rgba(0,0,0,1);
     -webkit-box-shadow: 0 0 4px rgba(0,0,0,1);
     -moz-box-shadow: 0 0 4px rgba(0,0,0,1);
+}
+.fork {
+    position: absolute;
+    top: 19px;
+    right: 20px;
+    background-color: #ccc;
+    color: black;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+.fork:hover {
+    background-color: #def;
+    border-color: #def;
+}
+.fork a {
+    padding: 0 2px 0 4px;
+    color: black;
+    font-size: 11px;
+    line-height: 11px;
 }
