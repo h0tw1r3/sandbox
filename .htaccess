@@ -10,6 +10,9 @@ IndexOptions +FancyIndexing +HTMLTable +SuppressColumnSorting +XHTML +SuppressDe
 RewriteEngine On
 RewriteRule (.*).source$ /sandbox/php/source/htmlsource/htmlsource.php [L]
 
+# Redirect old links
+RewriteRule ^jquery(.*) /sandbox/javascript/jquery$1 [R=301,L]
+
 <Files ~ "^\.ht">
     Order allow,deny
     Allow from all
