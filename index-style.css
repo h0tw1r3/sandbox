@@ -27,15 +27,31 @@ h3,h4,h5,h6 {
     background-color: transparent;
     color: black;
 }
+img {
+    float: left;
+    padding: 2px 4px;
+}
+p img:nth-child(1) {
+    float: right;
+}
 a {
     text-decoration: none;
 }
-p,ul,ol {
+strong {
+    font-weight: 800;
+}
+em {
+    font-style: italic;
+}
+div > p, body > p {
     padding: .5em;
-    margin: 0;
+}
+ul,ol {
+    margin-left: 2.5em;
+    padding: .5em;
 }
 ol li, ul li {
-    list-style-position: inside;
+    list-style-position: outside;
 }
 ol li {
     list-style-type: decimal;
@@ -102,15 +118,15 @@ tr:hover a.source {
 }
 .watermark {
     background-color: white;
-    border: 6px solid white;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
+    border: 3px solid white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     cursor: pointer;
     position:fixed;
     right:8px;
     bottom:8px;
-    box-shadow: 0 0 5px rgba(0,0,0,1);
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,1);
-    -moz-box-shadow: 0 0 5px rgba(0,0,0,1);
+    box-shadow: 0 0 4px rgba(0,0,0,1);
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,1);
 }

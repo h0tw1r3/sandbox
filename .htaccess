@@ -1,8 +1,11 @@
+<Files "README">
+  ForceType text/plain
+</Files>
 HeaderName /sandbox/HEADER.html
-ReadmeName README.html
+ReadmeName README
 IndexStyleSheet http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css
-IndexHeadInsert '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="/sandbox/index-style.css">'
-IndexIgnore *~ *# RCS CVS *,v *,t *.log *.swp
+IndexHeadInsert '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="/sandbox/index-style.css"><script src="http://wmd-new.googlecode.com/hg/showdown.js" type="text/javascript"></script>'
+IndexIgnore *~ *# .git RCS CVS *,v *,t *.log *.swp
 Options +Indexes +Multiviews
 DirectoryIndex none
 IndexOptions +FancyIndexing +HTMLTable +SuppressColumnSorting +XHTML +SuppressDescription

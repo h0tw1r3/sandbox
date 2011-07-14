@@ -20,6 +20,14 @@
       clearTimeout(i);
       i = setTimeout('$("div.watermark").fadeIn();', 2000);
     });
+    $('pre').replaceWith(function() {
+      return '<div class="markdown">' + this.innerHTML + '</div>';
+    });
+    var converter = new Attacklab.showdown.converter();
+    $('.markdown').each(function(i,e) {
+      var text = converter.makeHtml(this.innerHTML);
+      this.innerHTML = text;
+    });
   });
 </script>
 <div class="watermark" onClick="top.location.href='http://zaplabs.com'" />
