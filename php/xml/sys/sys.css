@@ -1,0 +1,114 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+th {
+  font-family: Arial, sans-serif;
+  background-color: #ddd;
+  border-bottom: 1px solid black;
+}
+td {
+  vertical-align: top;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none !important;
+}
+li {
+  padding-left: 2px;
+  list-style-type: none !important;
+}
+
+.uploads {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  min-width: 100px;
+  border: 1px solid black;
+}
+.uploads div {
+  text-align: center;
+  background-color: #ddd;
+  border-bottom: 1px solid black;
+}
+
+.lshw ul,
+.lshw li {
+  margin: 0; padding: 0;
+  line-height: 1em;
+  list-style-type: none !important;
+}
+.lshw ul ul {
+  padding-left: 8px;
+}
+
+.lshw ul ul li {
+  border-left: 1px dotted #000;
+  padding-left: 8px;
+  background: transparent url(dotted.gif) scroll no-repeat 1px 0.5em;
+  line-height: 1.5em;
+}
+.lshw ul ul li.last {
+  border-left: none;
+  position: relative;
+  vertical-align: top;
+  background: transparent url(dottedangle.gif) scroll no-repeat left -0.1em;
+}
+.lshw li span {
+  margin-right: 4px;
+  vertical-align: top;
+}
+
+.class {
+  background:transparent url(.external/sprite.png) no-repeat -170px -561px;
+  font-size: 0px; color: white;
+  display:inline-block;
+  height:16px; width:16px; margin:0; padding:0; border:0; overflow:hidden;
+}
+
+.sprite-system { background-position: -51px -510px; } 
+.sprite-system-portable { background-position: -221px -1836px; } 
+
+.sprite-bus { background-position: -153px -867px; } 
+.sprite-bus-usb { background-position: -221px -1768px; } 
+.sprite-bus-firewire { background-position: -221px -1785px; } 
+
+.sprite-bridge { background-position: -153px -850px; } 
+.sprite-bridge-pcmcia { background-position: -221px -1802px; } 
+
+.sprite-disk { background-position: -85px -663px; } 
+.sprite-disk-disc { background-position: -68px -561px; } 
+
+.sprite-storage { background-position: -170px -1887px; } 
+.sprite-storage-usb { background-position: -221px -680px; } 
+
+.sprite-network { background-position: -153px -578px; } 
+.sprite-network-wireless { background-position: -221px -1851px; } 
+.sprite-multimedia-speaker { background-position: -187px -1139px; } 
+.sprite-multimedia { background-position: -187px -1122px; } 
+.sprite-printer { background-position: -170px -255px; } 
+.sprite-communication-bluetooth { background-position: -17px -1802px; } 
+
+.sprite-processor { background-position: -170px -272px; } 
+
+.sprite-power { background-position: -153px -1836px; } 
+.sprite-power-battery { background-position: -17px -1360px; } 
+
+/*
+.sprite-volume-unmounted { background-position: -68px -323px; } 
+.sprite-volume-network { background-position: -68px -272px; } 
+.sprite-volume-share { background-position: -68px -289px; }
+*/
+
+.sprite-volume { background-position: -68px -255px; } 
+.sprite-volume-container { background-position: -68px -357px; } 
+.sprite-volume-unmounted { background-position: -68px -204px; } 
+
+.sprite-display { background-position: -204px -782px; } 
+.sprite-input-mouse { background-position: -153px -238px; } 
+.sprite-input-keyboard { background-position: -119px -1054px; } 
+.sprite-memory { background-position: -136px -1683px; } 
+.sprite-microphone { background-position: -136px -1717px; } 
+.sprite-headphone { background-position: -102px -1972px; } 
+

@@ -1,0 +1,27 @@
+<div class="header">
+  <h1>Playground @ Zaplabs.com</h1>
+  <p>Code snippets, examples, tutorials and projects in various states of development. Stuff starts here and ends up as an article (sometimes).  <em>Colorized source is available for all text files by adding a .source suffix to the request.</em></p>
+  <p>If you can download the source for <strong>anything</strong>, or have something to contribue, <a href="http://zaplabs.com/contact">contact me</a>.</p>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('tbody tr:odd').addClass('odd'); 
+    $('tbody tr td:first-child + td').each(function(i,e) {
+      var a = $(this).find('a');
+      var path = a.attr('href');
+      if (path.slice(path.length-1,path.length) !== '/') {
+        var sourcepath = path+'.source';
+        $(this).prepend('<a class="source" href="'+sourcepath+'">view source</a> ');
+      }
+    });
+    var i = null;
+    $(window).scroll(function(ev) {
+      $("div.watermark").fadeOut();
+      clearTimeout(i);
+      i = setTimeout('$("div.watermark").fadeIn();', 2000);
+    });
+  });
+</script>
+<div class="watermark" onClick="top.location.href='http://zaplabs.com'" />
+    <img src="/small-zapheader.png" alt="Zaplabs" />
+</div>

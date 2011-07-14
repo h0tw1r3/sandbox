@@ -1,0 +1,17 @@
+HeaderName /sandbox/HEADER.html
+ReadmeName README.html
+IndexStyleSheet http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css
+IndexHeadInsert '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="/sandbox/index-style.css">'
+IndexIgnore *~ *# RCS CVS *,v *,t *.log *.swp
+Options +Indexes +Multiviews
+DirectoryIndex none
+IndexOptions +FancyIndexing +HTMLTable +SuppressColumnSorting +XHTML +SuppressDescription
+
+RewriteEngine On
+RewriteRule (.*).source$ /sandbox/php/source/htmlsource/htmlsource.php [L]
+
+<Files ~ "^\.ht">
+    Order allow,deny
+    Allow from all
+    Satisfy all
+</Files>
