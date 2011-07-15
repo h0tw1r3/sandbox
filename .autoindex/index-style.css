@@ -5,8 +5,9 @@ body {
     font-size: 13px;
     background-color: white;
     margin: 8px;
+    padding-bottom: 4px;
     font-family: 'Consolas','Lucida Console',monospace;
-    border-bottom: 1px solid black;
+    border: 1px solid #ccc;
 }
 h1,h2,h3,h4,h5,h6 {
     background-color: #333;
@@ -20,6 +21,7 @@ h1,h2 {
 }
 h1 {
     font-size: 28px;
+    padding-bottom: 8px !important;
 }
 h2 {
     font-size: 24px;
@@ -56,6 +58,9 @@ em {
 div > * {
     padding: 4px 8px;
 }
+div > pre {
+    margin: 4px 8px;
+}
 ul,ol {
     margin-left: 2.5em;
     padding: .5em;
@@ -72,13 +77,17 @@ ul li {
 table, div { background-color: white; }
 table {
     padding: .5em;
-    width: 100%;
     border-collapse: collapse;
     border: 1px solid black;
     border-top: 4px solid white;
+    margin: 4px 8px;
 }
-code {
-    white-space:pre;
+pre {
+    border: 1px solid #bbb;
+    background-color: #eee;
+    display: inline-block;
+    margin: 4px 0;
+    padding: 4px 8px;
 }
 tr:first-child {
     color: white;
@@ -115,9 +124,6 @@ a.source {
     visibility: hidden;
     float: right;
     background-color: #2d2;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
     border: 2px solid #2d2;
     padding: 0 2px;
     font-size: 11px;
@@ -130,9 +136,6 @@ tr:hover a.source {
 .watermark {
     background-color: white;
     border: 3px solid white;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
     cursor: pointer;
     position:fixed;
     right:8px;
@@ -143,14 +146,11 @@ tr:hover a.source {
 }
 .fork {
     position: absolute;
-    top: 19px;
+    top: 21px;
     right: 20px;
     background-color: #ccc;
     color: black;
     border: 2px solid #ccc;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
 }
 .fork:hover {
     background-color: #def;
@@ -168,4 +168,14 @@ div:after {
     display: block;
     visibility: hidden;
     clear: both;
+}
+pre, a.source, .watermark {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+body, .fork, h1 {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
 }

@@ -28,8 +28,9 @@
     });
     var converter = new Attacklab.showdown.converter();
     $('.markdown').each(function(i,e) {
-      var text = converter.makeHtml(this.innerHTML);
-      this.innerHTML = text;
+      this.innerHTML = converter.makeHtml($(this).html().replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+      $(this).find('pre code').addClass('prettyprint');
+      prettyPrint();
     });
   });
 </script>
