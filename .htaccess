@@ -8,7 +8,7 @@ IndexHeadInsert '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/
 IndexIgnore *~ *# .git RCS CVS *,v *,t *.log *.swp
 Options +Indexes +Multiviews
 DirectoryIndex none
-IndexOptions +FancyIndexing +HTMLTable +SuppressColumnSorting +XHTML +SuppressDescription
+IndexOptions +FancyIndexing +HTMLTable +SuppressColumnSorting +XHTML +SuppressDescription +Charset=UTF-8 +FoldersFirst +IgnoreClient +IgnoreCase
 
 RewriteEngine On
 RewriteRule (.*).source$ /sandbox/php/source/htmlsource/htmlsource.php [L]
