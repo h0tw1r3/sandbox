@@ -1,4 +1,4 @@
-<?php @require_once($_SERVER['DOCUMENT_ROOT'] . '/prettyhtml/inc-source.php');
+<?php @require_once($_SERVER['DOCUMENT_ROOT'] . '/sandbox/php/source/prettyhtml/inc-source.php');
 
 $upload_dir = "./upload";
 $max_file_size = "80000";
