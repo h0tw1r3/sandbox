@@ -9,8 +9,6 @@ body {
     border-bottom: 1px solid black;
 }
 h1,h2,h3,h4,h5,h6 {
-    margin: 0;
-    padding: 4px 6px;
     background-color: #333;
     color: white;
     font-weight: 900;
@@ -55,8 +53,8 @@ strong {
 em {
     font-style: italic;
 }
-div > p, body > p {
-    padding: .5em;
+div > * {
+    padding: 4px 8px;
 }
 ul,ol {
     margin-left: 2.5em;
@@ -77,6 +75,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid black;
+    border-top: 4px solid white;
 }
 code {
     white-space:pre;
