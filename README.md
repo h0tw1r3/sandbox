@@ -25,4 +25,4 @@ Each collection should include a NOTICE file reflecting the copyright holder(s) 
 [2]: https://raw.github.com/h0tw1r3/sandbox/master/NOTICE
 [3]: https://raw.github.com/h0tw1r3/sandbox/master/LICENSE
 [4]: http://zaplabs.com/contact
-[5]: https://raw.github.com/h0tw1r3/sandbox/master/osi_standard_logo.png "Open Source Initiative Logo"
+[5]: https://raw.github.com/h0tw1r3/sandbox/master/.autoindex/osi_standard_logo.png "Open Source Initiative Logo"
