@@ -34,7 +34,7 @@
   });
 </script>
 <div class="watermark" onClick="top.location.href='http://zaplabs.com'" />
-    <img src="/small-zapheader.png" alt="Zaplabs" />
+    <img src="/sandbox/.autoindex/small-zapheader.png" alt="Zaplabs" />
 </div>
 <div class="fork">
     <a href="http://github.com/h0tw1r3/sandbox">Fork me on GitHub &#x25BA;</a>
