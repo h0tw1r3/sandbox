@@ -17,7 +17,7 @@ None, take it or leave it.  Nobody is forcing you to be here, or use anything co
 ### Copyright and license ###
 
 ![GNUv3 GPL Logo][2]
-Everything here is Copyright &copy 2011 Jeffrey Clark.  Expection is any resource found under a path labeled '.external'.  Whatever falls under my copyright I license to everyone under the terms of the [GNUv3 General Public License][3].  I very much appreciate the works others have shared, and I have no interest in taking credit for work that is not my own.  Please [contact me][4] if you have any questions or issues.
+Everything here is Copyright © 2011 Jeffrey Clark.  Expection is any resource found under a path labeled '.external'.  Whatever falls under my copyright I license to everyone under the terms of the [GNUv3 General Public License][3].  I very much appreciate the works others have shared, and I have no interest in taking credit for work that is not my own.  Please [contact me][4] if you have any questions or issues.
 
 
 [1]: http://zaplabs.com/
