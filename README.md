@@ -14,7 +14,7 @@ Current web environment is Apache 2.2.19 on top of Debian "unstable".  Most lang
 
 None, take it or leave it.  Nobody is forcing you to be here, or use anything contained in this site.  Everything here is intended as a resource for educational purposes only.
 
-### Copyright and license ###
+### Copyright and License ###
 
 ![Open Source Initiative][5]
 Foremost I appreciate the knowledge and time millions of others have shared before me.  I have no interest in taking credit that is not my own.  Please [contact me][4] directly with any issues.
@@ -22,7 +22,7 @@ Foremost I appreciate the knowledge and time millions of others have shared befo
 Each collection should include a NOTICE file reflecting the copyright holder(s) and year(s) of distribution.  Each collection should include a LICENSE file reflecting the licensing terms and conditions.  In the absence of a either file, [NOTICE][2] and [LICENSE][3] must be used respectively.  Exception; any resource(s) found within a collection labeled ".external" is subject to specific copyright and licensing terms and conditions.
 
 [1]: http://zaplabs.com/
-[2]: NOTICE
-[3]: LICENSE
+[2]: https://raw.github.com/h0tw1r3/sandbox/master/NOTICE
+[3]: https://raw.github.com/h0tw1r3/sandbox/master/LICENSE
 [4]: http://zaplabs.com/contact
-[5]: osi_standard_logo.png "Open Source Initiative Logo"
+[5]: https://raw.github.com/h0tw1r3/sandbox/master/osi_standard_logo.png "Open Source Initiative Logo"
