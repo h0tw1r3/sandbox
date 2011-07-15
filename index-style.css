@@ -34,11 +34,11 @@ h3,h4,h5,h6 {
     color: black;
 }
 img {
-    float: left;
+    float: right;
     padding: 2px 4px;
 }
 p img:nth-child(1) {
-    float: right;
+    float: left;
 }
 a {
     text-decoration: none;
@@ -162,4 +162,11 @@ tr:hover a.source {
     color: black;
     font-size: 11px;
     line-height: 11px;
+}
+div:after {
+    content: '.';
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
 }

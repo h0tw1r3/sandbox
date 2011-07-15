@@ -16,11 +16,13 @@ None, take it or leave it.  Nobody is forcing you to be here, or use anything co
 
 ### Copyright and license ###
 
-![GNUv3 GPL Logo][2]
-Everything here is Copyright © 2011 Jeffrey Clark.  Expection is any resource found under a path labeled '.external'.  Whatever falls under my copyright I license to everyone under the terms of the [GNUv3 General Public License][3].  I very much appreciate the works others have shared, and I have no interest in taking credit for work that is not my own.  Please [contact me][4] if you have any questions or issues.
+![Open Source Initiative][5]
+Foremost I appreciate the knowledge and time millions of others have shared before me.  I have no interest in taking credit that is not my own.  Please [contact me][4] directly with any issues.
 
+Each collection should include a NOTICE file reflecting the copyright holder(s) and year(s) of distribution.  Each collection should include a LICENSE file reflecting the licensing terms and conditions.  In the absence of a either file, [NOTICE][2] and [LICENSE][3] must be used respectively.  Exception; any resource(s) found within a collection labeled ".external" is subject to specific copyright and licensing terms and conditions.
 
 [1]: http://zaplabs.com/
-[2]: http://www.gnu.org/graphics/gplv3-88x31.png "GNUv3 GPL Logo"
-[3]: http://www.gnu.org/copyleft/gpl.html
+[2]: NOTICE
+[3]: LICENSE
 [4]: http://zaplabs.com/contact
+[5]: osi_standard_logo.png "Open Source Initiative Logo"

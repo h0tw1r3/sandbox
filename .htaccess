@@ -14,7 +14,8 @@ RewriteEngine On
 RewriteRule (.*).source$ /sandbox/php/source/htmlsource/htmlsource.php [L]
 
 # Redirect old links
-RewriteRule ^jquery(.*) /sandbox/javascript/jquery$1 [R=301,L]
+RewriteRule ^jquery/(.*) /sandbox/javascript/jquery/$1 [R=301,L]
+RewriteRule ^php/xml/sys/(.*) /sandbox/php/xml/lshw/$1 [R=301,L]
 
 <Files ~ "^\.ht">
     Order allow,deny
