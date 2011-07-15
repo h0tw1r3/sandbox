@@ -1,16 +1,22 @@
 <?php @require_once($_SERVER['DOCUMENT_ROOT'] . '/prettyhtml/inc-source.php');
 
 $upload_dir = "./upload";
+$max_file_size = "80000";
 
 if (isset($_FILES['file'])) {
+    unset($_REQUEST['view']);
     switch($_FILES['file']['error']) {
     case UPLOAD_ERR_OK:
         $tmp_name = $_FILES['file']['tmp_name'];
         $name = $_FILES['file']['name'];
 
-        move_uploaded_file($tmp_name, "$upload_dir/$name");
-        $_REQUEST['view'] = $name;
-        break;
+        /* check to make sure we received what we requested  */
+        if ($_POST['MAX_FILE_SIZE'] === $max_file_size) {
+            if (is_uploaded_file($tmp_name) && move_uploaded_file($tmp_name, "$upload_dir/$name")) {
+                $_REQUEST['view'] = $name;
+                break;
+            }
+        }
     default:
         $output = "Error occured receiving file upload.";
     }
@@ -34,6 +40,9 @@ foreach (glob("$upload_dir/*.xml") as $filename) {
   <body>
     <div>
       <form method="post" enctype="multipart/form-data">
+        <!-- catches when a "nice" client tries to send a big (wrong) file //-->
+        <!-- worthless against script kiddies unless you double check it on post //-->
+        <input type="hidden" name="MAX_FILE_SIZE" value="<?= $max_file_size ?>" />
         <label for="file">File:</label>
         <input type="file" name="file" id="file" />
         <input type="submit" name="submit" value="Submit" />
