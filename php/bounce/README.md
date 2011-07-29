@@ -20,13 +20,13 @@ Create redirect rules however you like.  I prefer they be as non-intrusive as po
 **Apache**: Create/edit .htaccess file in your web root and add the following.
 
     RewriteCond %{QUERY_STRING} ^([A-Za-z0-9]+)$
-    RewriteRule ^$  /bounce_app.php?r=%1 [L]
+    RewriteRule ^$  /bounce_app.php?%1 [L]
 
 **Nginx**: Assuming you have PHP setup, add this to your config.
 
 	location = / {
 		if ($args ~ "^([a-z0-9]+)$") {
-			rewrite ^/$ /bounce/app.php?r=$args;
+			rewrite ^/$ /bounce/app.php?$args;
 		}
 	}
 

@@ -147,6 +147,11 @@ class Bounce
             $user_agent = (array_key_exists('HTTP_USER_AGENT', $_SERVER)) ? $_SERVER['HTTP_USER_AGENT'] : NULL;
             $stmt->execute(array($this->item['id'], $this->clicker['id'], ip2long($_SERVER['REMOTE_ADDR']), $user_agent, $referer));
         }
+
+        if ($this->item['disabled']) {
+            return FALSE;
+        }
+
         header('Location: ' . $this->item['url'], TRUE, 302);
     }
 

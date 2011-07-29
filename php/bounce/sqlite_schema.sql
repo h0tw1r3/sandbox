@@ -1,5 +1,6 @@
 CREATE TABLE [bounce_items] (
     [id] INTEGER PRIMARY KEY, 
+    [disabled] INTEGER DEFAULT 0,
     [url] VARCHAR(1024) NOT NULL, 
     [created_at] INTEGER DEFAULT (strftime('%s','now')), 
     [name] VARCHAR(128));

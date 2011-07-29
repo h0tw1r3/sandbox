@@ -5,7 +5,7 @@
  * Notes: Import schema into database first and set DSN respectively
  *     Apache .htaccess config
  *        RewriteCond %{QUERY_STRING} ^([A-Za-z0-9]+)$
- *        RewriteRule ^$  /bounce_app.php?r=%1 [L]
+ *        RewriteRule ^$  /bounce_app.php?%1 [L]
  * Author: Jeffrey Clark
  */
 
@@ -17,15 +17,17 @@ require_once 'bounce.php';
 
 Bounce::setPDO(new PDO(BOUNCE_DSN));
 
-$bounce = Bounce::To(isset($_REQUEST['r']) ? $_REQUEST['r'] : '');
+$bounce = Bounce::To($_SERVER['QUERY_STRING']);
 
-if (!$bounce || !$bounce->findItem()) {
-    // Optional: Redirect to an error page.
-    echo "invalid id";
+if (!$bounce) {
+    echo file_get_contents('./bounce-error.html');
+} elseif(!$bounce->findItem()) {
+    echo file_get_contents('./bounce-invalid.html');
 } else {
     if (!$bounce->findClicker()) {
         $bounce->createClicker();
     }
-    $bounce->go();
+    if (!$bounce->go()) {
+        echo file_get_contents('./bounce-disabled.html');
+    }
 }
-
