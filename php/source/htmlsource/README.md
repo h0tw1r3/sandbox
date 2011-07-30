@@ -13,4 +13,9 @@ Colorizes any text file.  When setup properly, it works just like mod_php's appl
 
 ### Nginx Instructions ###
 
-Incomplete, but should be easy.
+Pretty much the same as Apache, just a different rewrite rule.
+
+    location / {
+        rewrite ^(.*).source$ /htmlsource.php last;
+    }
+
