@@ -8,11 +8,11 @@ Feel free to browse around, and donʼt forget to check out [Zaplabs.com][1].  Th
 
 ### Environment ###
 
-Current web environment is Apache 2.2.19 on top of Debian "unstable".  Most languages are bolted on through FastCGI.
+Current web environment is Nginx 1.0.5 on top of an AWS micro instance.  Most languages are bolted on through FastCGI.
 
 ### Warranty ###
 
-None, take it or leave it.  Nobody is forcing you to be here, or use anything contained in this site.  Everything here is intended as a resource for educational purposes only.
+None, take it or leave it.  Everything here is intended as a resource for educational purposes only.
 
 ### Copyright and License ###
 
