@@ -12,6 +12,14 @@ Since I use Nginx, this will work for any web server with rewrite or aliasing su
 
 The only relevant part to configure is STRIP_URI in calc.php.  Obviously it is set for the sandbox enviornment here.
 
+#### Issue with Apache ####
+
+The .htaccess file included will get you 99% there.  One problem you will likely run into is how Apache handles encoded slashes "/".  By default Apache decodes them before any path processing.  Seems stupid that [AllowEncodedSlashes][4] defaults to Off, but it is easy to work around.  Simply add:
+
+    AllowEncodedSlashes On
+
+To the VirtualHost configuration.  Sorry, but it does not work in an .htaccess file.
+
 ### Try it ###
 
 [2+2][1], [2/2][2], [9*(8/2)][3]  
@@ -19,4 +27,4 @@ The only relevant part to configure is STRIP_URI in calc.php.  Obviously it is s
 [1]: calc/2+2.txt
 [2]: calc/2/2.txt
 [3]: calc/9*(8/2).txt
-
+[4]: http://httpd.apache.org/docs/2.0/mod/core.html#allowencodedslashes
