@@ -6,7 +6,7 @@ ReadmeName /sandbox/.autoindex/FOOTER.shtml
 IndexStyleSheet http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css
 IndexHeadInsert '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="/sandbox/.autoindex/index-style.css"><script src="http://wmd-new.googlecode.com/hg/showdown.js" type="text/javascript"></script><script type="text/javascript" language="javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script><link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" rel="stylesheet" />'
 IndexIgnore *~ *# .git RCS CVS *,v *,t *.log *.swp
-Options +Indexes +Multiviews
+Options +Indexes +Multiviews +Includes
 DirectoryIndex none
 IndexOptions +FancyIndexing +HTMLTable +SuppressColumnSorting +XHTML +SuppressDescription +Charset=UTF-8 +FoldersFirst +IgnoreClient +IgnoreCase
 
