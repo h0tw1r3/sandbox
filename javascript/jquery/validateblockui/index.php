@@ -1,4 +1,4 @@
-<?php @require_once($_SERVER['DOCUMENT_ROOT'] . '/prettyhtml/inc-source.php');
+<?php @require_once($_SERVER['DOCUMENT_ROOT'] . '/sandbox/php/source/prettyprint/inc-source.php');
 
 if (!empty($_REQUEST)) sleep(2);
 
