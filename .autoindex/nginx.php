@@ -20,6 +20,15 @@ define('IGNORE_REGEX', '/^(.*~|.*#|.*\.git|RCS|CVS|.*,v|.*,t|.*\.log|.*\.swp|\.a
 define('CLEAN_REQUEST_URI', str_replace('/../', '/', urldecode($_SERVER['REQUEST_URI'])));
 define('INDEX_PATH', $_SERVER['DOCUMENT_ROOT'] . CLEAN_REQUEST_URI);
 
+if (!is_dir(INDEX_PATH)) {
+    if (PHP_SAPI == 'cgi-fcgi') {
+        header("Status: 404 Not Found");
+    } else {
+        header("HTTP/1.0 404 Not Found");
+    }
+    exit;
+}
+
 // Open path and build array of file stats
 $curdir = dir(INDEX_PATH);
 while (($entry_name = $curdir->read()) !== FALSE) {
