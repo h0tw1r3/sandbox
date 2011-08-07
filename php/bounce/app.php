@@ -15,6 +15,11 @@ require_once 'bounce.php';
 
 # Bounce::debug_request_log();
 
+if (!file_exists(BOUNCE_DSN)) {
+    echo file_get_contents('./bounce-error.html');
+    exit;
+}
+
 Bounce::setPDO(new PDO(BOUNCE_DSN));
 
 $bounce = Bounce::To($_SERVER['QUERY_STRING']);

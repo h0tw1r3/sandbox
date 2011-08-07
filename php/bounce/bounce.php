@@ -100,7 +100,7 @@ class Bounce
 
     public function findItem() {
         $stmt = self::$dbHandle->query('SELECT * FROM bounce_items WHERE id = ' . $this->item_id, PDO::FETCH_ASSOC);
-        if ($row = $stmt->fetch()) {
+        if ($stmt && $row = $stmt->fetch()) {
             $this->item = $row;
             $this->sendItemTracker();
             return TRUE;
