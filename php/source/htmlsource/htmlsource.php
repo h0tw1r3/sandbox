@@ -56,7 +56,7 @@ if (!empty($error_message)) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="return pretty view of a resource" />
     <meta name="tags" content="code highlight" />
-    <title>Source: <?= $filepath ?></title>
+    <title>Source: <?= basename($recv_filepath) ?></title>
     <script type="text/javascript" language="javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
     <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" rel="stylesheet" />
     <style>
