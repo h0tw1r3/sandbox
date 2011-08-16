@@ -71,7 +71,9 @@ class Bounce
     }
 
     public function createClicker() {
-        $stmt = self::$dbHandle->prepare('INSERT INTO '.self::T_PREFIX.'clickers (user_agent) VALUES (?)');
+        $stmt = self::$dbHandle->prepare(
+            'INSERT INTO '.self::T_PREFIX.'clickers (user_agent) VALUES (?)'
+        );
         if ($stmt->execute(array($_SERVER['HTTP_USER_AGENT']))) {
             $this->clicker_type = Bounce::CLICKER_TYPE_NEW;
             $this->clicker['id'] = self::$dbHandle->lastInsertId();
@@ -84,7 +86,10 @@ class Bounce
     }
 
     public function lookupClicker($existingTracker = NULL) {
-        $stmt = self::$dbHandle->query('SELECT * FROM '.self::T_PREFIX.'clickers WHERE id = ' . $this->clicker_id, PDO::FETCH_ASSOC);
+        $stmt = self::$dbHandle->query(
+            'SELECT * FROM '.self::T_PREFIX.'clickers WHERE id = ' . $this->clicker_id,
+            PDO::FETCH_ASSOC
+        );
         if ($row = $stmt->fetch()) {
             $this->clicker = $row;
             if ($existingTracker) {
@@ -100,7 +105,10 @@ class Bounce
     }
 
     public function findItem() {
-        $stmt = self::$dbHandle->query('SELECT * FROM '.self::T_PREFIX.'items WHERE id = ' . $this->item_id, PDO::FETCH_ASSOC);
+        $stmt = self::$dbHandle->query(
+            'SELECT * FROM '.self::T_PREFIX.'items WHERE id = ' . $this->item_id,
+            PDO::FETCH_ASSOC
+        );
         if ($stmt && $row = $stmt->fetch()) {
             $this->item = $row;
             $this->sendItemTracker();
