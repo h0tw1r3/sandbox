@@ -13,8 +13,8 @@ class Bounce
         $clicker_headers_sent = FALSE,
         $clicker_type = NULL;
 
-	private static
-		$dbHandle;
+    private static
+        $dbHandle;
 
     private
         $item_id,
@@ -43,9 +43,9 @@ class Bounce
         $this->item_id = self::decode($bounceTo, 62, 10);
     }
 
-	static function setPDO($pdo) {
-		self::$dbHandle = $pdo;
-	}
+    static function setPDO($pdo) {
+        self::$dbHandle = $pdo;
+    }
 
     public function findClicker() {
         foreach ($_COOKIE as $key => $value) {
@@ -190,41 +190,41 @@ class Bounce
         return TRUE;
     }
 
-	static function encode($id) {
-		return self::my_base_convert($id, 10, 62);
-	}
+    static function encode($id) {
+        return self::my_base_convert($id, 10, 62);
+    }
 
-	static function decode($code) {
-		return self::my_base_convert($code, 62, 10);
-	}
+    static function decode($code) {
+        return self::my_base_convert($code, 62, 10);
+    }
 
-	static function my_base_convert ($numstring, $frombase = 62, $tobase = 10) {
-	   $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	   $tostring = substr($chars, 0, $tobase);
+    static function my_base_convert ($numstring, $frombase = 62, $tobase = 10) {
+       $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       $tostring = substr($chars, 0, $tobase);
 
-	   $length = strlen($numstring);
-	   $result = '';
-	   for ($i = 0; $i < $length; $i++) {
-		   $number[$i] = strpos($chars, $numstring{$i});
-	   }
-	   do {
-		   $divide = 0;
-		   $newlen = 0;
-		   for ($i = 0; $i < $length; $i++) {
-			   $divide = $divide * $frombase + $number[$i];
-			   if ($divide >= $tobase) {
-				   $number[$newlen++] = (int)($divide / $tobase);
-				   $divide = $divide % $tobase;
-			   } elseif ($newlen > 0) {
-				   $number[$newlen++] = 0;
-			   }
-		   }
-		   $length = $newlen;
-		   $result = $tostring{$divide} . $result;
-	   }
-	   while ($newlen != 0);
-	   return $result;
-	}
+       $length = strlen($numstring);
+       $result = '';
+       for ($i = 0; $i < $length; $i++) {
+           $number[$i] = strpos($chars, $numstring{$i});
+       }
+       do {
+           $divide = 0;
+           $newlen = 0;
+           for ($i = 0; $i < $length; $i++) {
+               $divide = $divide * $frombase + $number[$i];
+               if ($divide >= $tobase) {
+                   $number[$newlen++] = (int)($divide / $tobase);
+                   $divide = $divide % $tobase;
+               } elseif ($newlen > 0) {
+                   $number[$newlen++] = 0;
+               }
+           }
+           $length = $newlen;
+           $result = $tostring{$divide} . $result;
+       }
+       while ($newlen != 0);
+       return $result;
+    }
 
     static function debug_request_log() {
         $data = PHP_EOL . "SERVER::" . PHP_EOL;
