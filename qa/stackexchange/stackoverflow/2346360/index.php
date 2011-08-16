@@ -1,6 +1,6 @@
 <?php @require_once($_SERVER['DOCUMENT_ROOT'] . '/sandbox/php/source/prettyprint/inc-source.php');
 
-if (!empty($_REQUEST)) sleep(2);
+if (!empty($_GET)) sleep(2);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
