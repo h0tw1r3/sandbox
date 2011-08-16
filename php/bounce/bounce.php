@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Description: Class decodes, encodes, tracks and redirects URLs
+ * Description: Decodes/encodes short URL's, tracks uniques, and redirects
  * Author: Jeffrey Clark
  */
 
@@ -22,6 +22,7 @@ class Bounce
         $send_tracking = FALSE;
 
     const
+        T_PREFIX = 'bounce_',
         CLICKER_TYPE_UNKNOWN = NULL,
         CLICKER_TYPE_NEW = 1,
         CLICKER_TYPE_COOKIE = 2,
@@ -70,7 +71,7 @@ class Bounce
     }
 
     public function createClicker() {
-        $stmt = self::$dbHandle->prepare('INSERT INTO bounce_clickers (user_agent) VALUES (?)');
+        $stmt = self::$dbHandle->prepare('INSERT INTO '.self::T_PREFIX.'clickers (user_agent) VALUES (?)');
         if ($stmt->execute(array($_SERVER['HTTP_USER_AGENT']))) {
             $this->clicker_type = Bounce::CLICKER_TYPE_NEW;
             $this->clicker['id'] = self::$dbHandle->lastInsertId();
@@ -83,7 +84,7 @@ class Bounce
     }
 
     public function lookupClicker($existingTracker = NULL) {
-        $stmt = self::$dbHandle->query('SELECT * FROM bounce_clickers WHERE id = ' . $this->clicker_id, PDO::FETCH_ASSOC);
+        $stmt = self::$dbHandle->query('SELECT * FROM '.self::T_PREFIX.'clickers WHERE id = ' . $this->clicker_id, PDO::FETCH_ASSOC);
         if ($row = $stmt->fetch()) {
             $this->clicker = $row;
             if ($existingTracker) {
@@ -99,7 +100,7 @@ class Bounce
     }
 
     public function findItem() {
-        $stmt = self::$dbHandle->query('SELECT * FROM bounce_items WHERE id = ' . $this->item_id, PDO::FETCH_ASSOC);
+        $stmt = self::$dbHandle->query('SELECT * FROM '.self::T_PREFIX.'items WHERE id = ' . $this->item_id, PDO::FETCH_ASSOC);
         if ($stmt && $row = $stmt->fetch()) {
             $this->item = $row;
             $this->sendItemTracker();
@@ -141,11 +142,21 @@ class Bounce
     }
 
     public function go() {
-        $stmt = self::$dbHandle->prepare('INSERT INTO bounce_clicks (bounce_item_id, bounce_clicker_id, ip_address, user_agent, referer) VALUES (?, ?, ?, ?, ?)');
+        $stmt = self::$dbHandle->prepare(
+            'INSERT INTO '.self::T_PREFIX.'clicks '
+            . '(bounce_item_id, bounce_clicker_id, ip_address, user_agent, referer) '
+            . 'VALUES (?, ?, ?, ?, ?)'
+        );
         if ($stmt) {
             $referer = (array_key_exists('HTTP_REFERER', $_SERVER)) ? $_SERVER['HTTP_REFERER'] : NULL;
             $user_agent = (array_key_exists('HTTP_USER_AGENT', $_SERVER)) ? $_SERVER['HTTP_USER_AGENT'] : NULL;
-            $stmt->execute(array($this->item['id'], $this->clicker['id'], ip2long($_SERVER['REMOTE_ADDR']), $user_agent, $referer));
+            $stmt->execute(array(
+                $this->item['id'],
+                $this->clicker['id'],
+                ip2long($_SERVER['REMOTE_ADDR']),
+                $user_agent,
+                $referer
+            ));
         }
 
         if ($this->item['disabled']) {
@@ -240,5 +251,3 @@ class Bounce
         file_put_contents('tracker.log', $data, FILE_TEXT|FILE_APPEND);
     }
 }
-
-// Copyright © 2009-2011 Jeffrey Clark
