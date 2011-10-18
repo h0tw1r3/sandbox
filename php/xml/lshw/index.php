@@ -22,10 +22,12 @@ if (isset($_FILES['file'])) {
     }
 }
 
+$output = "";
 if (isset($_REQUEST['view'])) {
-  $output = transform($upload_dir . "/" . $_REQUEST['view']);
+  $output .= transform($upload_dir . "/" . $_REQUEST['view']);
 }
 
+$uploads = '';
 foreach (glob("$upload_dir/*.xml") as $filename) {
   $filename = basename($filename);
   $uploads .= "<li><a href='?view=" . urlencode($filename) . "'>" . htmlentities($filename) . "</a></li>";
