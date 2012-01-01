@@ -172,6 +172,11 @@ pre, a.source, .watermark {
     border-radius: 4px;
     display: block;
 }
+pre {
+    -webkit-box-shadow: inset 0px 0px 4px 0px #bbb;
+    -moz-box-shadow: inset 0px 0px 4px 0px #bbb;
+    box-shadow: inset 0px 0px 4px 0px #bbb;
+}
 .prettyprint {
     overflow: auto;
     display: block;
