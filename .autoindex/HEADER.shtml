@@ -1,5 +1,5 @@
 <div class="header">
-  <h1><a href="/sandbox/">Playground</a> @ <a href="http://zaplabs.com/">Zaplabs</a></h1>
+  <div class="title"><a href="/sandbox/">Playground</a> @ <a href="http://zaplabs.com/">Zaplabs</a></div>
   <p>Code snippets, examples, tutorials and projects in various states of development.  Stuff starts here and ends up as an article on zaplabs.com (sometimes).  <em>Colorized source is available for all text files by adding a .source suffix to the request.</em></p>
 </div>
 <!--#config errmsg="" -->

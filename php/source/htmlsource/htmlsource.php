@@ -61,7 +61,7 @@ if (!empty($error_message)) {
     <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" rel="stylesheet" />
     <style>
       html, body { padding:0;margin:.5em; }
-      * { font-size: 13px; font-family: Consolas,Tahoma,Arial,serif; }
+      * { font-size: 13px; font-family: Consolas,DejaVu Sans Mono,Monaco,Terminal,Courier New; }
       .watermark { position:fixed; right:16px; bottom:8px; }
     </style>
   </head>

@@ -5,16 +5,15 @@ body {
     font-size: 13px;
     background-color: white;
     margin: 8px;
-    padding-bottom: 4px;
     font-family: 'Consolas','Lucida Console',monospace;
     border: 1px solid #ccc;
 }
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,.title,.footer {
     background-color: #333;
     color: white;
     font-weight: 900;
 }
-h1,h2 {
+h1,h2,.title {
     color: #ef0;
     line-height: 1em;
     padding-bottom: 6px;
@@ -43,10 +42,10 @@ p img:nth-child(1) {
 a {
     text-decoration: none;
 }
-h1 a,h2 a {
+h1 a,h2 a,.title a, .footer a {
     color: orange;
 }
-h1 a:hover, h2 a:hover {
+h1 a:hover, h2 a:hover, .title a:hover, .footer a:hover {
     color: #ffc520;
 }
 strong {
@@ -55,7 +54,7 @@ strong {
 em {
     font-style: italic;
 }
-div > * {
+body > div > * {
     padding: 4px 8px;
 }
 div > pre {
@@ -80,7 +79,7 @@ table {
     border-collapse: collapse;
     border: 1px solid black;
     border-top: 4px solid white;
-    margin: 4px 8px;
+    margin: 8px 8px;
 }
 pre {
     border: 1px solid #bbb;
@@ -146,11 +145,9 @@ tr:hover a.source {
 }
 .fork {
     position: absolute;
-    top: 21px;
-    right: 20px;
+    top: 1.1em;
+    right: 1.1em;
     background-color: #ccc;
-    color: black;
-    border: 2px solid #ccc;
 }
 .fork:hover {
     background-color: #def;
@@ -173,9 +170,30 @@ pre, a.source, .watermark {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+    display: block;
 }
-body, .fork, h1 {
+.prettyprint {
+    overflow: auto;
+    display: block;
+}
+body, .fork {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
+}
+.header, .title {
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-topright: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.footer {
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-bottomright: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
