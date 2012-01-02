@@ -94,8 +94,8 @@ function reduce_size($intval, $base = 0) {
         <title>Index of <?php echo CLEAN_REQUEST_URI; ?></title>
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" />
         <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" rel="stylesheet" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
-        <script src="http://wmd-new.googlecode.com/hg/showdown.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="http://pagedown.googlecode.com/hg/Markdown.Converter.js" type="text/javascript"></script>
         <script type="text/javascript" language="javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
         <link rel="stylesheet" type="text/css" href="/sandbox/.autoindex/index-style.css" />
     </head>

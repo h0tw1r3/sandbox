@@ -26,7 +26,7 @@
     $('pre.not([prettyprint])').replaceWith(function() {
       return '<div class="markdown">' + this.innerHTML + '</div>';
     });
-    var converter = new Attacklab.showdown.converter();
+    var converter = new Markdown.Converter();
     $('.markdown').each(function(i,e) {
       this.innerHTML = converter.makeHtml($(this).html().replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
       $(this).find('pre code').addClass('prettyprint');
