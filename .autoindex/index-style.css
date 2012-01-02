@@ -170,12 +170,12 @@ pre, a.source, .watermark {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    display: block;
 }
 pre {
     -webkit-box-shadow: inset 0px 0px 4px 0px #bbb;
     -moz-box-shadow: inset 0px 0px 4px 0px #bbb;
     box-shadow: inset 0px 0px 4px 0px #bbb;
+    max-width: 95%;
 }
 .prettyprint {
     overflow: auto;
