@@ -73,11 +73,21 @@ if (!empty($error_message)) {
 <?php else: ?>
 <code class="prettyprint" style="white-space:pre"><?php
 $fp = fopen($recv_filepath, "r");
+$is_utf16 = false;
+if (!feof($fp)) {
+  $line = fread($fp,128);
+  $is_utf16 = is_utf16($line);
+  rewind($fp);
+}
 $stat = fstat($fp);
 $modified_year = date('Y',$stat['mtime']);
 $copyright_years = date('Y',$stat['ctime']);
 while($fp && !feof($fp)) {
-  echo htmlentities(fread($fp,1024),ENT_NOQUOTES,'UTF-8',FALSE);
+  $line = fread($fp,32768);
+  if ($is_utf16) {
+    $line = utf16_to_utf8($line);
+  }
+  echo htmlentities($line,ENT_NOQUOTES,'UTF-8',FALSE);
 }
 fclose($fp);
 ?></code>
@@ -104,9 +114,63 @@ function is_binary_file($file) {
   catch(Exception $e) {
     $block = "";
   }
-  return (
+  return is_binary($block);
+}
+
+function is_binary($block, $utf = true) {
+  $test = (
     0 or substr_count($block, "^ -~")/strlen($block) > 0.3
     or substr_count($block, "\x00") > 0
   ); 
+  if ($test && !($utf && is_utf16($block))) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
+function is_utf16($string) {
+  if (is_binary($string, false)) {
+    $test = mb_convert_encoding($string, 'UTF-8', 'UTF-16');
+    if (strlen($test) > 1) {
+      $test2 = mb_convert_encoding($test, 'UTF-16', 'UTF-8');
+      $test3 = mb_convert_encoding($test2, 'UTF-8', 'UTF-16');
+      if ($test3 == $test) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+function utf16_to_utf8($str) {
+    $c0 = ord($str[0]);
+    $c1 = ord($str[1]);
+
+    if ($c0 == 0xFE && $c1 == 0xFF) {
+        $be = true;
+    } else if ($c0 == 0xFF && $c1 == 0xFE) {
+        $be = false;
+    } else {
+        return $str;
+    }
+
+    $str = substr($str, 2);
+    $len = strlen($str);
+    $dec = '';
+    for ($i = 0; $i < $len; $i += 2) {
+        $c = ($be) ? ord($str[$i]) << 8 | ord($str[$i + 1]) : 
+                ord($str[$i + 1]) << 8 | ord($str[$i]);
+        if ($c >= 0x0001 && $c <= 0x007F) {
+            $dec .= chr($c);
+        } else if ($c > 0x07FF) {
+            $dec .= chr(0xE0 | (($c >> 12) & 0x0F));
+            $dec .= chr(0x80 | (($c >>  6) & 0x3F));
+            $dec .= chr(0x80 | (($c >>  0) & 0x3F));
+        } else {
+            $dec .= chr(0xC0 | (($c >>  6) & 0x1F));
+            $dec .= chr(0x80 | (($c >>  0) & 0x3F));
+        }
+    }
+    return $dec;
+}
