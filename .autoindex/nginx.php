@@ -17,8 +17,8 @@ define('FOLLOW_SYMLINKS', FALSE); // Not supported yet.
 define('IGNORE_REGEX', '/^(.*~|.*#|.*\.git|RCS|CVS|.*,v|.*,t|.*\.log|.*\.swp|\.autoindex)$/');
 
 // Prefix for all path operations, strip garbage
-define('CLEAN_REQUEST_URI', str_replace('/../', '/', urldecode($_SERVER['REQUEST_URI'])));
-define('INDEX_PATH', $_SERVER['DOCUMENT_ROOT'] . CLEAN_REQUEST_URI);
+define('CLEAN_REQUEST_URI', str_replace('/../', '/', $_SERVER['REQUEST_URI']));
+define('INDEX_PATH', $_SERVER['DOCUMENT_ROOT'] . urldecode(CLEAN_REQUEST_URI));
 
 if (!is_dir(INDEX_PATH)) {
     if (PHP_SAPI == 'cgi-fcgi') {
@@ -59,7 +59,7 @@ while (($entry_name = $curdir->read()) !== FALSE) {
         if ($entry_name == '..') {
             $entry['icon'] = 'back';
             $entry['name'] = 'Parent Directory';
-            $entry['uri'] = dirname(CLEAN_REQUEST_URI);
+            $entry['uri'] = urlencode(dirname(urldecode(CLEAN_REQUEST_URI)));
         }
         if (substr($entry['uri'], -1) !== '/') {
             $entry['uri'] .= '/';
