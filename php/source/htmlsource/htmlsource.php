@@ -27,7 +27,7 @@ if (strpos($request,'../') !== FALSE) {
     $request = '';
 }
 
-$tmp = urldecode(substr_replace($request,SRCSUFFIX_REPLACE,-(strlen(SRCSUFFIX))));
+$tmp = rawurldecode(substr_replace($request,SRCSUFFIX_REPLACE,-(strlen(SRCSUFFIX))));
 $recv_filepath = realpath($_SERVER['DOCUMENT_ROOT'].$tmp);
 
 // Does the source file or symlink exist?

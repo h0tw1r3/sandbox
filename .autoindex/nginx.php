@@ -18,7 +18,7 @@ define('IGNORE_REGEX', '/^(.*~|.*#|.*\.git|RCS|CVS|.*,v|.*,t|.*\.log|.*\.swp|\.a
 
 // Prefix for all path operations, strip garbage
 define('CLEAN_REQUEST_URI', str_replace('/../', '/', $_SERVER['REQUEST_URI']));
-define('INDEX_PATH', $_SERVER['DOCUMENT_ROOT'] . urldecode(CLEAN_REQUEST_URI));
+define('INDEX_PATH', $_SERVER['DOCUMENT_ROOT'] . rawurldecode(CLEAN_REQUEST_URI));
 
 if (!is_dir(INDEX_PATH)) {
     if (PHP_SAPI == 'cgi-fcgi') {
@@ -53,13 +53,13 @@ while (($entry_name = $curdir->read()) !== FALSE) {
 
     $entry['type'] = 'file';
     $entry['name'] = $entry_name;
-    $entry['uri'] = CLEAN_REQUEST_URI.urlencode($entry_name);
+    $entry['uri'] = CLEAN_REQUEST_URI.rawurlencode($entry_name);
     if (is_dir($path)) {
         $entry['type'] = $entry['icon'] = 'folder';
         if ($entry_name == '..') {
             $entry['icon'] = 'back';
             $entry['name'] = 'Parent Directory';
-            $entry['uri'] = urlencode(dirname(urldecode(CLEAN_REQUEST_URI)));
+            $entry['uri'] = dirname(rawurldecode(CLEAN_REQUEST_URI));
         }
         if (substr($entry['uri'], -1) !== '/') {
             $entry['uri'] .= '/';
