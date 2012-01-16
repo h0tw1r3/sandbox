@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NZB Edit</title>
+        <style type="text/css">
+            html, body { width: 100%; height: 100%;  margin: 0px; padding: 0px; font-family: monospace; }
+            #titlebar { position: fixed; top: 0; left: 0; right: 0; background-color: #ccc; border-bottom: 1px solid #999; padding: .1em .2em; }
+            #help, #choose { margin: .5em .2em; }
+            #choose label { float: left; clear: left; color: #a00; }
+            .right { float: right; }
+            .right:before { content: '|'; color: red; } 
+            #titlebar .file:after { content: ' |'; color: red; } 
+            #titlebar input { height: .9em; font-size: 70%; }
+            #choose label.select { color: blue; }
+            #choose label.selected { color: green; }
+            #choose label { white-space: nowrap; }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="titlebar">
+            <span id="title" class="right"><strong>NZB Edit</strong></span>
+            <span class="file">File: <span id="file-name"></span> <span id="file-download"><a></a></span></span>
+            <span id="options">Select: <input id="filter" name="filter" size="10" /></span>
+        </div>
+        <div id="help">Only tested in Chrome.  100% client side.  Ugly code, muhahaha!<br/><br/><strong>Drop an NZB and enjoy.</strong></div>
+        <div id="choose"></div>
+        <script type="text/javascript">
+            $('#titlebar').after('<div style="height: ' + $('#titlebar').height() + 'px"></div>');
+            window.URL = window.URL || window.webkitURL;
+            window.BlobBuilder = window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder;
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+            } else {
+                alert('File API not fully supported by this browser');
+            }
+            jQuery.event.props.push('dataTransfer');
+            jQuery.fn.outerHTML = function() {
+                $t = $(this);
+                if ( "outerHTML" in $t[0] ) { return $t[0].outerHTML; }
+                else { var content = $t.wrap('<div></div>').parent().html(); $t.unwrap(); return content; }
+            }
+            $(document).ready(function() {
+                var filterval = $('#filter').val();
+                $('#filter').on('keyup', function(e) {
+                    setTimeout(checkit, 0.2);
+                });
+                function checkit() {
+                    if ($('#filter').val() != filterval) {
+                        content = $('#filter').val();
+                        $('#choose label.select').removeClass('select');
+                        $('#choose file[subject*="'+content+'"]').parent().addClass('select');
+                    }
+                }
+                $('#filter').on('change', function() {
+                    $('#choose label.select').removeClass('select');
+                    $('#choose file[subject*="'+this.value+'"]').parent().not('.selected').click();
+                });
+                $('#choose').on('click', 'label', function(e) {
+                    if (e.target == this) {
+                        e.stopPropagation();
+                        $(this).find('input')[0].click()
+                    }
+                });
+                $('#choose').on('change', 'input', function(e) {
+                    if (this.checked) {
+                        $(this).parent().addClass('selected');
+                    } else {
+                        $(this).parent().removeClass('selected');
+                    }
+                    blob = new window.BlobBuilder();
+                    blob.append(nzbstart);
+                    $('#choose input[type=checkbox]:checked+file').each(function() {
+                        blob.append($(this).outerHTML());
+                    });
+                    blob.append('</nzb>');
+                    $('#file-download a').attr('download', 'partial-' + file.name).text('Download');
+                    $('#file-download a').attr('href', window.URL.createObjectURL(blob.getBlob('application/x-nzb')));
+                });
+                var blob = {}; var nzbstart = ''; var file = {};
+                var body = $('body').on('dragenter dragover', false).on('drop', function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        file = e.dataTransfer.files[0];
+                        $('#help').hide();
+                        $('#file-name').text(file.name);
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            nzbstart = reader.result.substring(0,reader.result.indexOf('<file ')).replace(/\r\n|\r/g,'\n');
+                            $(e.target.result).find('file').each(function(i) {
+                                var label = $('<label for="nzb-file-'+i+'"><input type="checkbox" name="nzb-file-'+i+'" />'+$(this).attr('subject')+'</label>');
+                                label.append($(this).hide());
+                                $('#choose').append(label);
+                            });
+                        };
+                        reader.readAsText(file);
+                    });
+            });
+        </script>
+    </body>
+</html>
