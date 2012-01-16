@@ -15,7 +15,7 @@ function rewrite_source($buffer) {
 
     $('#prettyhtml_toggle').click(function() {
       if (!($('#prettyhtml_source')[0])) {
-          $('#prettyhtml_block').append('<iframe id="prettyhtml_source" src="index.php?%s"></iframe>');
+          $('#prettyhtml_block').append('<iframe id="prettyhtml_source" src="' + window.location.pathname + '.source"></iframe>');
       }
       $(window).trigger('resize');
       $('#prettyhtml_block').toggle(1,function() {
@@ -54,7 +54,6 @@ EOD;
       if (!empty($inject_jquery)) {
         $inject_head = $inject_jquery."\n".$inject_head;
       }
-      $inject_head = sprintf($inject_head,$_SERVER['PHP_SELF']);
       $buffer = substr_replace($buffer,$inject_head,$pos,0);
       $inject_head = $inject_jquery = NULL;
     }
