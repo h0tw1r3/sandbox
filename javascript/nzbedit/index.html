@@ -90,13 +90,32 @@
                             nzbstart = reader.result.substring(0,reader.result.indexOf('<file ')).replace(/\r\n|\r/g,'\n');
                             $('#choose').text('');
                             $(e.target.result).find('file').each(function(i) {
-                                var label = $('<label for="nzb-file-'+i+'"><input type="checkbox" name="nzb-file-'+i+'" />'+$(this).attr('subject')+'</label>');
+                                var bytes = 0;
+                                $(this).find('segment').each(function(){bytes += parseInt($(this).attr('bytes')); });
+                                var fdate = new Date($(this).attr('date') * 1000);
+                                var label = $('<label for="nzb-file-'+i+'"><input type="checkbox" name="nzb-file-'+i+'" />'+reduceSize(bytes)+' &middot; '+$(this).attr('subject')+'</label>');
                                 label.append($(this).hide());
                                 $('#choose').append(label);
                             });
                         };
                         reader.readAsText(file);
                     });
+                function reduceSize(s) {
+                    var z = s.toString().charAt(s.length-1);
+                    if (isNaN(z)) {
+                        s = parseFloat(s.substring(0,s.length-1));
+                        if (s < 1024) { return s.toFixed(1) + z; }
+                        s = ( s / 1024 );
+                    }
+                    switch(z) {
+                        case 'b': z = 'K'; break;
+                        case 'K': z = 'M'; break;
+                        case 'M': z = 'G'; break;
+                        case 'G': z = 'T'; break;
+                        default: z = 'b';
+                    }
+                    return reduceSize(s+z);
+                }
             });
         </script>
     </body>
