@@ -42,18 +42,20 @@
             $(document).ready(function() {
                 var filterval = $('#filter').val();
                 $('#filter').on('keyup', function(e) {
-                    setTimeout(checkit, 0.2);
                 });
                 function checkit() {
                     if ($('#filter').val() != filterval) {
                         content = $('#filter').val();
-                        $('#choose label.select').removeClass('select');
                         $('#choose file[subject*="'+content+'"]').parent().addClass('select');
                     }
                 }
-                $('#filter').on('change', function() {
+                $('#filter').on('keypress', function(e) {
                     $('#choose label.select').removeClass('select');
-                    $('#choose file[subject*="'+this.value+'"]').parent().not('.selected').click();
+                    if (e.keyCode < 14) {
+                        $('#choose file[subject*="'+this.value+'"]').parent().not('.selected').click();
+                    } else {
+                        setTimeout(checkit, 0.2);
+                    }
                 });
                 $('#choose').on('click', 'label', function(e) {
                     if (e.target == this) {
@@ -86,6 +88,7 @@
                         var reader = new FileReader();
                         reader.onload = function(e) {
                             nzbstart = reader.result.substring(0,reader.result.indexOf('<file ')).replace(/\r\n|\r/g,'\n');
+                            $('#choose').text('');
                             $(e.target.result).find('file').each(function(i) {
                                 var label = $('<label for="nzb-file-'+i+'"><input type="checkbox" name="nzb-file-'+i+'" />'+$(this).attr('subject')+'</label>');
                                 label.append($(this).hide());
