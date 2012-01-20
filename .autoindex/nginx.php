@@ -86,6 +86,7 @@ function reduce_size($intval, $base = 0) {
 }
 
 // Output HTML
+header("Content-type: text/html; charset=utf-8");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
@@ -105,7 +106,9 @@ $fh = fopen(dirname(__FILE__).'/HEADER.shtml','r');
 if ($fh) {
     while (($line = fgets($fh, 4096)) !== FALSE) {
         if (strstr($line, '<!--#include virtual="${SCRIPT_URL}README.md" -->') !== FALSE) {
-            @readfile(INDEX_PATH.'README.md');
+            require_once('./markdown.php');
+            $text = @file_get_contents(INDEX_PATH.'README.md');
+            echo Markdown($text);
         } else {
             echo $line;
         }
