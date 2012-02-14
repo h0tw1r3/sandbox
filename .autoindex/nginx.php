@@ -93,11 +93,9 @@ header("Content-type: text/html; charset=utf-8");
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Index of <?php echo CLEAN_REQUEST_URI; ?></title>
-        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" />
-        <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" rel="stylesheet" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" language="javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
-        <link rel="stylesheet" type="text/css" href="/sandbox/.autoindex/index-style.css" />
+        <link rel="stylesheet" type="text/css" href="/sandbox/.autoindex/style.css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
     </head>
     <body>
 <?php 
