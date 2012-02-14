@@ -1,14 +1,14 @@
-## Welcome ##
+# Playground Index #
 
-Feel free to browse around, and donʼt forget to check out [Zaplabs.com][1].  The idea is to scratch out some code here, and blog or write an article there.  Thatʼs the *idea* anyway.
+Feel free to browse around, and donʼt forget to check out [Zaplabs.com][1].  The original idea was to scratch out ideas here, and blog there &mdash; but lately my time has been consumed by work that pays the bills.
 
-### Goal ###
+### Goals ###
 
 100% transparency!  If you can see it, you should be able to download, compile, and execute yourself.  This does not mean everything will work as you expect, that you have the capacity to make it work, or even that it will work at all.  One of these days Iʼll write something so anyone can upload examples and working snippets of code.
 
 ### Environment ###
 
-Current web environment is Nginx 1.0.5 on top of an AWS micro instance.  Most languages are bolted on through FastCGI.
+Current web environment is served by Nginx on Debian unstable, which is virtualized using KVM.  Most web language support is bolted up with FastCGI.
 
 ### Warranty ###
 
