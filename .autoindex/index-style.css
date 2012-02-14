@@ -145,19 +145,18 @@ tr:hover a.source {
 }
 .fork {
     position: absolute;
-    top: 1.1em;
-    right: 1.1em;
+    top: 1.4em;
+    right: 1.4em;
     background-color: #ccc;
+    font-size: 10px;
+    line-height: 1.1em;
 }
 .fork:hover {
     background-color: #def;
     border-color: #def;
 }
 .fork a {
-    padding: 0 2px 0 4px;
     color: black;
-    font-size: 11px;
-    line-height: 11px;
 }
 div:after {
     content: '.';
