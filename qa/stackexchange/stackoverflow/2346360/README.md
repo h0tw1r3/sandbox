@@ -1,4 +1,4 @@
-## jQuery + Validate + BlockUI Example ##
+# jQuery + Validate + BlockUI Example #
 
 Demonstrates how to properly use them all together.
 

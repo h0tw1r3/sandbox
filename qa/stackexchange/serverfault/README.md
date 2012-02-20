@@ -1,4 +1,4 @@
-## ServerFault ##
+# ServerFault #
 
 Occasionally interesting solutions I have contributed to [serverfault][1].
 

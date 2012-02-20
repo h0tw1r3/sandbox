@@ -88,6 +88,18 @@ pre {
     margin: 4px 0;
     padding: 4px 8px;
 }
+pre code {
+    font-size: inherit;
+}
+code {
+    border: 1px solid #bbb;
+    background-color: #eee;
+    font-size: 85%;
+    padding: 0 .25em;
+}
+pre code {
+    border: none;
+}
 tr:first-child {
     color: white;
     background-color: #333;
@@ -165,7 +177,7 @@ div:after {
     visibility: hidden;
     clear: both;
 }
-pre, a.source, .watermark {
+pre, a.source, .watermark, code {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;

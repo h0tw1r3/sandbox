@@ -1,4 +1,4 @@
-## Source to HTML Colorizer ##
+# Source to HTML Colorizer #
 
 Colorizes any text file.  When setup properly, it works just like mod_php's application/x-httpd-php-source support or 'php -s' from the command line.
 

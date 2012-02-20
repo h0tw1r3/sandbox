@@ -104,8 +104,9 @@ if ($fh) {
     while (($line = fgets($fh, 4096)) !== FALSE) {
         if (strstr($line, '<!--#include virtual="${SCRIPT_URL}README.md" -->') !== FALSE) {
             require_once('./markdown.php');
-            $text = @file_get_contents(INDEX_PATH.'README.md');
-            echo Markdown($text);
+            if ( ( $text = @file_get_contents(INDEX_PATH.'README.md') ) || ( $text = @file_get_contents(INDEX_PATH.'README.mkd') ) ) {;
+                echo Markdown($text);
+            }
         } else {
             echo $line;
         }

@@ -1,4 +1,4 @@
-## Mod_rewrite Not Working with URL Encoded Values ##
+# Mod_rewrite Not Working with URL Encoded Values #
 
 Author was trying to work around encoding problems with Apache rewrite.  My suggestion is to remove Apache and mod_rewrite from the equation completely.
 

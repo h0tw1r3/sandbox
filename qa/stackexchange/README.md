@@ -1,4 +1,4 @@
-## StackExchange ##
+# StackExchange #
 
 Everything under this path relates to my [humble contributions][1] on various [StackExchange sites][2].
 
