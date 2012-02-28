@@ -2,8 +2,8 @@
 
 /*
  * Description: apache-like autoindex thing for other web servers
- * Notes: I built this for a quick swap from apache to nginx, even used the
- *        same table structure because I'm just that lazy tonight.
+ * Notes: I wrote this for a quick swap from apache to nginx, even used the
+ *        same table layout because I'm just that lazy tonight.
  *     location /sandbox {
  *         rewrite ^(.+).source$ /sandbox/php/source/htmlsource/htmlsource.php last;
  *         index /sandbox/.autoindex/nginx.php;
@@ -98,23 +98,57 @@ header("Content-type: text/html; charset=utf-8");
         <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
     </head>
     <body>
+<div class="header">
+  <div class="title"><a href="/sandbox/">Playground</a> @ <a href="http://zaplabs.com/">Zaplabs</a></div>
+  <p>Code snippets, examples, tutorials and projects in various states of development.  Stuff starts here and ends up as an article on zaplabs.com (sometimes).  <em>Colorized source is available for all text files by adding a .source suffix to the request.</em></p>
+</div>
+<div class="markdown">
 <?php 
-$fh = fopen(dirname(__FILE__).'/HEADER.shtml','r');
-if ($fh) {
-    while (($line = fgets($fh, 4096)) !== FALSE) {
-        if (strstr($line, '<!--#include virtual="${SCRIPT_URL}README.md" -->') !== FALSE) {
-            require_once('./markdown.php');
-            if ( ( $text = @file_get_contents(INDEX_PATH.'README.md') ) || ( $text = @file_get_contents(INDEX_PATH.'README.mkd') ) ) {;
-                echo Markdown($text);
-            }
-        } else {
-            echo $line;
-        }
+if ( ( $text = @file_get_contents(INDEX_PATH.'README.md') ) || ( $text = @file_get_contents(INDEX_PATH.'README.mkd') ) ) {
+    if ( extension_loaded('discount') ) {
+        $md = MarkdownDocument::createFromString($text);
+        $md->compile();
+        echo $md->getHtml();
+    } else {
+        require_once('./markdown.php');
+        echo Markdown($text);
     }
-    fclose($fh);
 }
 ?>
-    <table>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('tbody tr:odd').addClass('odd'); 
+    $('tbody tr td:first-child + td').each(function(i,e) {
+      var a = $(this).find('a');
+      var path = a.attr('href');
+      if (path.slice(path.length-1,path.length) !== '/') {
+        var sourcepath = path+'.source';
+        $(this).prepend('<a class="source" href="'+sourcepath+'">view source</a> ');
+      }
+    });
+    var i = null;
+    $(window).scroll(function(ev) {
+      $("div.watermark").fadeOut();
+      clearTimeout(i);
+      i = setTimeout('$("div.watermark").fadeIn();', 2000);
+    });
+    $('pre.not([prettyprint])').replaceWith(function() {
+      return '<div class="markdown">' + this.innerHTML + '</div>';
+    });
+    $('.markdown').each(function(i,e) {
+      $(this).find('pre > code').addClass('prettyprint');
+    });
+    prettyPrint();
+  });
+</script>
+<div class="watermark" onClick="top.location.href='http://zaplabs.com'" />
+    <img src="/sandbox/.autoindex/small-zapheader.png" alt="Zaplabs" />
+</div>
+<div class="fork">
+    <a href="http://github.com/h0tw1r3/sandbox">Fork me on GitHub &#x25BA;</a>
+</div>
+    <table id="autoindex">
         <tr>
             <th>&nbsp;</th>
             <th>Name</th>
@@ -140,6 +174,8 @@ foreach ($entries as $entry_name => $entry) {
 ?>
         <tr><th colspan="4"><hr /></th></tr>
     </table>
-<?php readfile(dirname(__FILE__).'/FOOTER.shtml'); ?>
+<div class="footer">
+  <p>Problems, Questions, Comments?  Feel free to <a href="http://zaplabs.com/contact">contact me</a>.</p>
+</div>
     </body>
 </html>
