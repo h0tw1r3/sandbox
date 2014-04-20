@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="how to syncronize animated gifs" />
+    <meta name="tags" content="gif animate jquery" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+    <title>Syncronized Animated Gifs</title>
+    <style>
+        .preload { visibility: hidden; }
+        img { width: 200px; }
+    </style>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('.preload').attr('src', function(i,a){
+                $(this).attr('src','').removeClass('preload').attr('src',a);
+            });
+        });
+    </script>
+  </head>
+  <body>
+    <div class="content">
+        <h1>Syncronized Animated Gifs</h1>
+        <img class="preload" src="clock1.gif" />
+        <img class="preload" src="clock2.gif" />
+        <img class="preload" src="clock3.gif" />
+    </div>
+  </body>
+</html>
