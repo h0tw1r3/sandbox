@@ -8,8 +8,8 @@
             #help, #choose { margin: .5em .2em; }
             #choose label { float: left; clear: left; color: #a00; }
             .right { float: right; }
-            .right:before { content: '|'; color: red; } 
-            #titlebar .file:after { content: ' |'; color: red; } 
+            .right:before { content: '|'; color: red; }
+            #titlebar .file:after { content: ' |'; color: red; }
             #titlebar input { height: .9em; font-size: 70%; }
             #choose label.select { color: blue; }
             #choose label.selected { color: green; }
@@ -69,14 +69,14 @@
                     } else {
                         $(this).parent().removeClass('selected');
                     }
-                    blob = new window.BlobBuilder();
-                    blob.append(nzbstart);
+                    data = nzbstart;
                     $('#choose input[type=checkbox]:checked+file').each(function() {
-                        blob.append($(this).outerHTML());
+                        data += $(this).outerHTML();
                     });
-                    blob.append('</nzb>');
+                    data += '</nzb>';
+                    var blob = new Blob([data], {type: 'application/x-nzb'});
                     $('#file-download a').attr('download', 'partial-' + file.name).text('Download');
-                    $('#file-download a').attr('href', window.URL.createObjectURL(blob.getBlob('application/x-nzb')));
+                    $('#file-download a').attr('href', window.URL.createObjectURL(blob));
                 });
                 var blob = {}; var nzbstart = ''; var file = {};
                 var body = $('body').on('dragenter dragover', false).on('drop', function(e) {
