@@ -8,6 +8,9 @@ body {
     font-family: 'Consolas','Lucida Console',monospace;
     border: 1px solid #ccc;
 }
+sup {
+    font-style: italic;
+}
 h1,h2,h3,h4,h5,h6,.title,.footer {
     background-color: #333;
     color: white;
@@ -27,6 +30,12 @@ h2 {
 }
 h3 {
     font-size: 20px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
 }
 h3,h4,h5,h6 {
     background-color: transparent;
@@ -187,6 +196,19 @@ pre {
     -moz-box-shadow: inset 0px 0px 4px 0px #bbb;
     box-shadow: inset 0px 0px 4px 0px #bbb;
     max-width: 95%;
+}
+dt {
+    font-weight: bold;
+}
+dt:after {
+    padding-right: .75em;
+    content: ':';
+}
+dd {
+    margin-left: 1em;
+}
+dd + dt {
+    margin-top: .25em;
 }
 .prettyprint {
     overflow: auto;

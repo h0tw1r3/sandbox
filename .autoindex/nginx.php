@@ -14,7 +14,7 @@
 // Config
 define('DATE_FORMAT', 'd-M-Y H:i:s T');
 define('FOLLOW_SYMLINKS', FALSE); // Not supported yet.
-define('IGNORE_REGEX', '/^(.*~|.*#|.*\.git|RCS|CVS|.*,v|.*,t|.*\.log|.*\.swp|\.autoindex)$/');
+define('IGNORE_REGEX', '/^(.htaccess|.*~|.*#|.*\.git|RCS|CVS|.*,v|.*,t|.*\.log|.*\.swp|\.autoindex)$/');
 
 // Prefix for all path operations, strip garbage
 define('CLEAN_REQUEST_URI', str_replace('/../', '/', $_SERVER['REQUEST_URI']));
