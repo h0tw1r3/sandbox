@@ -149,15 +149,18 @@ if ( ( $text = @file_get_contents(INDEX_PATH.'README.md') ) || ( $text = @file_g
     <a href="http://github.com/h0tw1r3/sandbox">Fork me on GitHub &#x25BA;</a>
 </div>
     <table id="autoindex">
-        <tr>
-            <th>&nbsp;</th>
-            <th>Name</th>
-            <th>Last modified</th>
-            <th>Size</th>
-        </tr>
-        <tr>
-            <th colspan="4"><hr /></th>
-        </tr>
+	<thead>
+		<tr>
+		    <th>&nbsp;</th>
+		    <th>Name</th>
+		    <th>Last modified</th>
+		    <th>Size</th>
+		</tr>
+		<tr>
+		    <th colspan="4"><hr /></th>
+		</tr>
+	</thead>
+	<tbody>
 <?php
 $entry_pf = '<tr><td valign="top"><img src="/sandbox/.autoindex/icons/%s.png" alt="[%s]" /></td><td><a href="%s">%s</a></td><td align="right">%s</td><td align="right">%s</td></tr>';
 reset($entries);
@@ -172,7 +175,10 @@ foreach ($entries as $entry_name => $entry) {
     );
 }
 ?>
-        <tr><th colspan="4"><hr /></th></tr>
+	<tbody>
+	<tfoot>
+		<tr><th colspan="4"><hr /></th></tr>
+	</tfoot>
     </table>
 <div class="footer">
   <p>Problems, Questions, Comments?  Feel free to <a href="http://zaplabs.com/contact">contact me</a>.</p>

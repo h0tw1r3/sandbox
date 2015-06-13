@@ -109,11 +109,11 @@ code {
 pre code {
     border: none;
 }
-tr:first-child {
+thead tr:first-child {
     color: white;
     background-color: #333;
 }
-tr + tr:hover {
+tbody tr:hover {
     background-color: #def;
 }
 th, td {
@@ -124,20 +124,20 @@ th, td {
 tr.odd {
     background-color: #eee;
 }
-th:first-child + th, td:first-child + td {
+#autoindex th:first-child + th, #autoindex td:first-child + td {
     text-align: left;
     width: 99%;
 }
-tr:first-child + tr {
+#autoindex thead tr:first-child + tr {
     display: none;
 }
-tr td:first-child {
+#autoindex thead tr td:first-child {
     width: 1%;
 }
-tr:last-child {
+#autoindex tfoot tr:last-child {
     display: none;
 }
-table hr {
+table#autoindex hr {
     display: none;
 }
 a.source {
