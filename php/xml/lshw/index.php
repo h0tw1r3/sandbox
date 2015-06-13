@@ -1,11 +1,14 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/sandbox/php/source/prettyprint/inc-source.php';
 
 $upload_dir = "./upload";
-$max_file_size = "80000";
+$max_file_size = "200000";
 
 if (isset($_FILES['file'])) {
     unset($_REQUEST['view']);
     switch($_FILES['file']['error']) {
+    case UPLOAD_ERR_FORM_SIZE:
+        $output = "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.";
+	break;
     case UPLOAD_ERR_OK:
         $tmp_name = $_FILES['file']['tmp_name'];
         $name = $_FILES['file']['name'];
@@ -16,13 +19,17 @@ if (isset($_FILES['file'])) {
                 $_REQUEST['view'] = $name;
                 break;
             }
+        } else {
+            $output = "Trying to be sneaky?";
+            break;
         }
     default:
         $output = "Error occured receiving file upload.";
     }
+} else {
+  $output = "";
 }
 
-$output = "";
 if (isset($_REQUEST['view'])) {
   $output .= transform($upload_dir . "/" . $_REQUEST['view']);
 }
