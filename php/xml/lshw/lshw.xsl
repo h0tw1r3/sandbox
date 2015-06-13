@@ -26,11 +26,13 @@
           <xsl:when test="(@class = 'memory' or @class = 'volume' or @class = 'disk') and size">
             <xsl:call-template name="prettyBytes">
               <xsl:with-param name="bytes" select="size" />
+              <xsl:with-param name="class" select="@class" />
             </xsl:call-template><xsl:text> </xsl:text><xsl:value-of select="description" />
           </xsl:when>
           <xsl:when test="(@class = 'memory' or @class = 'volume' or @class = 'disk') and capacity">
             <xsl:call-template name="prettyBytes">
               <xsl:with-param name="bytes" select="capacity" />
+              <xsl:with-param name="class" select="@class" />
             </xsl:call-template><xsl:text> </xsl:text><xsl:value-of select="description" />
           </xsl:when>
           <xsl:when test="@class = 'memory'">(empty)</xsl:when>
@@ -45,10 +47,10 @@
           <xsl:when test="@class = 'disk' and @id = 'medium'">
               (media not mounted)
           </xsl:when>
-          <xsl:when test="@class = 'network'">
-            <xsl:value-of select="description" />
+          <xsl:when test="@class = 'storage' and capabilities/capability/@id = 'emulated'">
+            Emulated Device
           </xsl:when>
-          <xsl:when test="description">
+          <xsl:when test="@class = 'network'">
             <xsl:value-of select="description" />
           </xsl:when>
           <xsl:otherwise>
@@ -83,15 +85,22 @@
 
   <xsl:template name="prettyBytes">
     <xsl:param name="bytes" />
+    <xsl:param name="class" />
+    <xsl:variable name="size">
+      <xsl:choose>
+        <xsl:when test="$class = 'disk'">1000</xsl:when>
+        <xsl:otherwise>1024</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="filesize">
       <xsl:if test="string-length($bytes) &gt; 0">
         <xsl:if test="number($bytes) &gt; 0">
           <xsl:choose>
-            <xsl:when test="floor($bytes div 1024) &lt; 1"><xsl:value-of select="$bytes" />B</xsl:when>
-            <xsl:when test="floor($bytes div 1024 div 1024) &lt; 1"><xsl:value-of select="format-number(($bytes div 1024), '#.##')" />KB</xsl:when>
-            <xsl:when test="floor($bytes div 1024 div 1024 div 1024) &lt; 1"><xsl:value-of select="format-number(($bytes div 1024 div 1024), '#.##')" />MB</xsl:when>
-            <xsl:when test="floor($bytes div 1024 div 1024 div 1024 div 1024) &lt; 1"><xsl:value-of select="format-number(($bytes div 1024 div 1024 div 1024), '#.##')" />GB</xsl:when>
-            <xsl:otherwise><xsl:value-of select="format-number(($bytes div 1024 div 1024 div 1024 div 1024), '#.##')" />TB</xsl:otherwise>
+            <xsl:when test="floor($bytes div $size) &lt; 1"><xsl:value-of select="$bytes" />B</xsl:when>
+            <xsl:when test="floor($bytes div $size div $size) &lt; 1"><xsl:value-of select="format-number(($bytes div $size), '#.##')" />KB</xsl:when>
+            <xsl:when test="floor($bytes div $size div $size div $size) &lt; 1"><xsl:value-of select="format-number(($bytes div $size div $size), '#.##')" />MB</xsl:when>
+            <xsl:when test="floor($bytes div $size div $size div $size div $size) &lt; 1"><xsl:value-of select="format-number(($bytes div $size div $size div $size), '#.##')" />GB</xsl:when>
+            <xsl:otherwise><xsl:value-of select="format-number(($bytes div $size div $size div $size div $size), '#.##')" />TB</xsl:otherwise>
           </xsl:choose>
         </xsl:if>
       </xsl:if>
